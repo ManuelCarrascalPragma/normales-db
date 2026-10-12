@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Ejercicio práctico de normalización de bases de datos: caso resuelto paso a paso (1NF → 6NF) con MER, retos y examen de dominio.">
+<title>Ejercicio Práctico · Normalización de Bases de Datos</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand" id="brand">
+    <span class="mark" aria-hidden="true">
+      <svg viewBox="0 0 36 36" width="32" height="32">
+        <defs><linearGradient id="mg" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#22d3ee"/><stop offset="1" stop-color="#6366f1"/>
+        </linearGradient></defs>
+        <rect x="1.5" y="1.5" width="33" height="33" rx="10" fill="url(#mg)" opacity=".16"/>
+        <rect x="1.5" y="1.5" width="33" height="33" rx="10" fill="none" stroke="url(#mg)" stroke-width="1.6"/>
+        <rect x="9" y="10" width="18" height="4.6" rx="2.3" fill="#22d3ee"/>
+        <rect x="9" y="16.7" width="13" height="4.6" rx="2.3" fill="#818cf8"/>
+        <rect x="9" y="23.4" width="16" height="4.6" rx="2.3" fill="#34d399" opacity=".92"/>
+      </svg>
+    </span>
+    <span class="brand-txt"><span>Normalización</span><small>ejercicio práctico · caso resuelto</small></span>
+  </div>
+  <div class="pipeline" id="pipeline"></div>
+  <div class="progress-track"><div class="progress-bar" id="progressBar"></div></div>
+  <div class="top-actions">
+    <button id="merBtn" class="btn btn-sm" title="Ver el MER en este paso">🗂 MER</button>
+    <button id="refBtn" class="btn btn-sm" title="Abrir panel de referencia">📚 Referencia</button>
+    <button id="repasoBtn" class="btn btn-sm" title="Alternar modo repaso">🎯 Repaso</button>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar" id="sidebar"></aside>
+
+  <main class="main" id="main">
+    <section class="step-header anim-in">
+      <span class="step-badge" id="stepBadge"></span>
+      <h1 id="stepTitle"></h1>
+      <p id="stepSubtitle"></p>
+    </section>
+
+    <section class="reto anim-in" id="reto"></section>
+
+    <section class="explain anim-in" id="explain"></section>
+
+    <section class="stage anim-in" id="stage">
+      <div class="stage-title" id="stageTitle"></div>
+      <div class="canvas" id="canvas"></div>
+    </section>
+
+    <section class="context-clouds anim-in" id="clouds"></section>
+
+    <section class="takeaway anim-in" id="takeaway"></section>
+
+    <footer class="npi anim-in"><p>Consejos: usa <kbd>←</kbd> / <kbd>→</kbd> para navegar · 🎯 Repaso te lleva a tus fallos · al final, el <b>Examen de dominio</b> cierra el ejercicio.</p></footer>
+
+    <nav class="pager anim-in">
+      <button id="prevBtn" class="btn">← Anterior</button>
+      <button id="nextBtn" class="btn btn-primary">Siguiente →</button>
+    </nav>
+  </main>
+</div>
+
+<div class="overlay" id="refModal" hidden aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="modal" role="document">
+    <div class="modal-head"><span>📚 Panel de referencia</span><button id="refClose" class="modal-close" aria-label="Cerrar">✕</button></div>
+    <div class="modal-tabs" role="tablist" aria-label="Secciones de referencia">
+      <button class="tab on" data-tab="cheat" role="tab" aria-selected="true">Chuleta</button>
+      <button class="tab" data-tab="gloss" role="tab" aria-selected="false">Glosario</button>
+      <button class="tab" data-tab="cards" role="tab" aria-selected="false">Flashcards</button>
+    </div>
+    <div class="modal-body" id="refBody" role="tabpanel"></div>
+  </div>
+</div>
+
+<div class="overlay" id="merModal" hidden aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="modal" role="document">
+    <div class="modal-head"><span id="merTitle">🗂 MER en este paso</span><button id="merClose" class="modal-close" aria-label="Cerrar">✕</button></div>
+    <div class="modal-body" id="merBody" role="tabpanel">
+      <div class="mer-caption" id="merCaption"></div>
+      <div class="canvas" id="merCanvas"></div>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
